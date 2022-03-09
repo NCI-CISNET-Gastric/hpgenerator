@@ -18,7 +18,7 @@ Description: An R package that generates the age-specific force of infection of
   Helicobacter pylori (H. pylori) by sex and race in the U.S.
 License: file LICENSE
 Depends:
-    R (>= 4.0.5)
+    R (>= 4.0.3)
 Imports:
     dplyr,
     ggplot2, 
