@@ -19,6 +19,8 @@
 #' @param data_name Name in string that will have the saved dataframe.
 #' @param width width of the saved plot.
 #' @param height height of the saved plot. 
+#' @import tidyverse
+#' @import ggplot2
 #' @import dplyr
 #' @return A dataframe with the Force of Infection (FOI) according to the specified variables by the user.
 #'
@@ -70,8 +72,8 @@ plot_foi <- function(age = c(0:100),
   
   df_foi_plot$sex <- factor(df_foi_plot$sex, levels = levels_sex)
   
-  
-  plot_temp <- ggplot(df_foi_plot, aes(y = foi_mean, x = age, group = period, 
+
+  plot_temp <-ggplot(df_foi_plot, aes(y = foi_mean, x = age, group = period, 
                                        color = period)) + 
     geom_line(aes(x = age, y = foi_mean))+
     xlab("Age") + ylab(expression(paste("Force of infection ", (lambda)))) +

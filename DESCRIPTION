@@ -20,6 +20,7 @@ License: file LICENSE
 Depends:
     R (>= 4.0.3)
 Imports:
+    tidyverse,
     dplyr,
     ggplot2, 
     bookdown

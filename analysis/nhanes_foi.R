@@ -17,7 +17,7 @@ test3 <- summary_foi(age = c(0:100),
 plot_foi(age = c(0:100), 
          sex = c("Male", "Female"), 
          race = c("Non-Hispanic White", "Other"), 
-         period = c(1991:2000), percs = T)
+         period = c(1991:2000), percs = F)
 
 
 library(hpgenerator)

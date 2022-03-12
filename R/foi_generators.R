@@ -11,7 +11,7 @@
 #' @param race Character vector specifying the race of the person 
 #' (Non-Hispanic White, Non-Hispanic Black, Other Hispanic, Mexican-American, Other)
 #' @param period Character vector specifying the period of interest of the FOI. The default period is the year 1991
-#' @import dplyr
+#' @import tidyverse
 #' @return A dataframe with the distributions of the alpha and gamma parameters according to the specified variables.
 #'
 #' @examples
@@ -110,7 +110,6 @@ generate_foi <- function(age = c(0:100),
       num_period = v_num_period[period_i]
       v_alpha_est <- ilogit(v_alpha0 + v_alpha1*num_period + v_alpha2*num_sex) 
       v_gamma_est <- exp(v_gamma0 + v_gamma1*num_period + v_gamma2*num_sex)
-      
       v_age <- matrix(age, nrow = 1)
       
       m_foi_hat <- ((v_alpha_est*v_gamma_est) * exp(-(v_gamma_est %*% v_age)))/(1-v_alpha_est*(1-exp(-(v_gamma_est %*% v_age))))
@@ -147,7 +146,7 @@ generate_foi <- function(age = c(0:100),
 #' @param period Character vector specifying the period of interest of the FOI. The default period is the year 1991
 #' @param percs Logical statement specifying the Confidence Intervals (Upper Bound (UB) and Lower Bound (LB)).
 #' TRUE to get Confidence Intervals.
-#' @import dplyr
+#' @import tidyverse
 #' @return A dataframe with the Force of Infection (FOI) according to the specified variables by the user.
 #'
 #' @examples
@@ -177,7 +176,7 @@ summary_foi <- function(age = c(0:100),
   
   UB <- 0.975
   
-  df_foi_long <- df_foi_hat %>% pivot_longer(names_to = "age",
+  df_foi_long <- df_foi_hat %>% tidyr::pivot_longer(names_to = "age",
                                              values_to = "value",
                                              cols = starts_with("age_"),
                                              names_prefix = "age_")
