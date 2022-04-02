@@ -17,7 +17,7 @@ Authors@R:
              family = "Gracia",
              role = c("aut"),
              email = "valeria.gracia@cide.edu",
-             comment = c(ORCID = "0000-0002-3972-9793")))
+             comment = c(ORCID = "0000-0003-4853-2922")))
 Maintainer: Jorge Roa <jorge.roa@cide.edu>
 Description: An R package that generates the age-specific force of infection of 
   Helicobacter pylori (H. pylori) by sex and race in the U.S.
