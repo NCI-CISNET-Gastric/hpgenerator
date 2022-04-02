@@ -29,7 +29,7 @@ generate_foi <- function(age = c(0:100),
                          sex = c("Male", "Female"), 
                          race = c("Non-Hispanic White", "Non-Hispanic Black", 
                                   "Other Hispanic", "Mexican-American", "Other"), 
-                         period = 1991) {
+                         period = 1991:2010) {
   
   if (!all(age %in% c(0:100))) {
     stop("age must be a number or numeric vector between 0 and 100 years")
@@ -165,7 +165,7 @@ summary_foi <- function(age = c(0:100),
                         race = c("Non-Hispanic White", "Non-Hispanic Black", 
                                  "Other Hispanic", "Mexican-American", 
                                  "Other"), 
-                        period = 1991, 
+                        period = 1991:2010, 
                         percs = T) {
   
   options(dplyr.summarise.inform = FALSE)

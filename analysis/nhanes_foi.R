@@ -1,23 +1,32 @@
 
-
+system.time(
 test <- generate_foi(age = 0:100, 
                      sex = c("Male","Female"),
                      race = c("Non-Hispanic White", "Non-Hispanic Black", 
                               "Other Hispanic", "Mexican-American", 
                               "Other"),
-                     period = c(1991:1994))
+                     period = c(1991:2010))
+)
 
-test3 <- summary_foi(age = c(0:100), 
-                     sex = c("Male", "Female"), 
-                     race = c("Non-Hispanic White", "Other"), 
-                     period = c(1991:1992), percs = T)
+time_summ_2 <- system.time(summary_foi(age = c(0:100), 
+                                     sex = c("Male","Female"),
+                                     race = c("Non-Hispanic White", "Non-Hispanic Black", 
+                                              "Other Hispanic", "Mexican-American", 
+                                              "Other"), 
+                     period = c(1991:2000), percs = T))
 
 
+library(ggplot2)
+time_all_2 <- system.time(plot_foi(age = 0:100, 
+         sex = c("Male","Female"),
+         race = c("Non-Hispanic White", "Non-Hispanic Black", 
+                  "Other Hispanic", "Mexican-American", 
+                  "Other"),
+         period = c(1991:2010))
+)
 
-plot_foi(age = c(0:100), 
-         sex = c("Male", "Female"), 
-         race = c("Non-Hispanic White", "Other"), 
-         period = c(1991:2000), percs = F)
+print(time_all)
+
 
 
 library(hpgenerator)

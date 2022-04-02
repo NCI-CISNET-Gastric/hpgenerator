@@ -1,7 +1,7 @@
 Type: Package
 Package: hpgenerator
 Title: Helicobacter pylori infection generator
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = "Fernando",
              family = "Alarid-Escudero",
@@ -12,7 +12,12 @@ Authors@R:
              family = "Roa",
              role = c("aut"),
              email = "jorge.roa@cide.edu",
-             comment = c(ORCID = "0000-0001-5076-1172")))
+             comment = c(ORCID = "0000-0002-3972-9793")),
+      person(given = "Valeria",
+             family = "Gracia",
+             role = c("aut"),
+             email = "valeria.gracia@cide.edu",
+             comment = c(ORCID = "0000-0002-3972-9793")))
 Maintainer: Jorge Roa <jorge.roa@cide.edu>
 Description: An R package that generates the age-specific force of infection of 
   Helicobacter pylori (H. pylori) by sex and race in the U.S.
