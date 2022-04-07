@@ -13,7 +13,7 @@ library(leaflet)
 
 
 # User Interface ------------------------------------------------------ 
-ui <- navbarPage(em("Helicobacter Pylori Generator"), selected = strong("Force of Infection"), collapsible = TRUE, inverse = TRUE, theme = shinytheme("yeti"),
+ui <- navbarPage(em("Helicobacter pylori Generator"), selected = strong("Force of Infection"), collapsible = TRUE, inverse = TRUE, theme = shinytheme("yeti"),
                            tabPanel(strong("Prevalence"), icon = icon("chart-area", "fa-lg"), 
                                     fluidPage(titlePanel(title = h1("Under construction :)", align = "center")))),
                            tabPanel(strong("Force of Infection"), icon = icon("chart-line", "fa-lg"),              
@@ -25,7 +25,7 @@ ui <- navbarPage(em("Helicobacter Pylori Generator"), selected = strong("Force o
                                                      tags$style(HTML('#goButton {margin-top: 10px}')),
                                                      div(h5("Force of infection", align = "center")),
                                                      tags$hr(style="height:2px;border-width:0;color:gray;background-color:gray"),
-                                                     h5("Select a age interval:", align = "center"),
+                                                     h5("Select an age interval:", align = "center"),
                                                      setSliderColor(c("#0cc1ef", "#f39c13", "#dd513e"),c(1,2,3)),
                                                      sliderInput(inputId = "deslizador", label =  "", 
                                                                  min = 0, max = 100, value = c(0,100), step = 1),
