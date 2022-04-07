@@ -10,7 +10,6 @@ library(shinyalert)
 library(shinyjs)
 library(leaflet)
 
-jsResetCode <- "shinyjs.reset = function() {history.go(0)}"
 
 
 # User Interface ------------------------------------------------------ 
@@ -19,8 +18,6 @@ ui <- navbarPage(em("Helicobacter Pylori Generator"), selected = strong("Force o
                                     fluidPage(titlePanel(title = h1("Under construction :)", align = "center")))),
                            tabPanel(strong("Force of Infection"), icon = icon("chart-line", "fa-lg"),              
                                     fluidPage(
-                                      useShinyjs(),
-                                      extendShinyjs(text = jsResetCode, functions = c("reset")),
                                       sidebarLayout(
                                         # La barra lateral
                                         sidebarPanel(div(img(src = "foi.png", height = 80, width = "100%", align = "right")),#, style="text-align: center;"),
@@ -247,12 +244,6 @@ observeEvent(input$goButton, {
 
       }})
  
-      
-      observeEvent(input$shinyalert, {
-        if(input$shinyalert == TRUE){
-          js$reset()
-        }
-      })
 #
 #  alert_yes_m_f <- reactive({
 #    if(input$male == T & input$female== T){
