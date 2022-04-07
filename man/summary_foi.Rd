@@ -10,7 +10,7 @@ summary_foi(
   sex = c("Male", "Female"),
   race = c("Non-Hispanic White", "Non-Hispanic Black", "Other Hispanic",
     "Mexican-American", "Other"),
-  period = 1991,
+  period = 1991:2010,
   percs = T
 )
 }
