@@ -20,9 +20,11 @@ library(profvis)
 
 library(ggplot2)
 
-profvis({ generate_foi()}, interval = .1)
+profvis({generate_foi()}, interval = .1)
 
-profvis({ summary_foi()}, interval = .1)
+profvis({summary_foi()}, interval = .1)
+
+prueba <- generate_foi()
 
 profvis({ plot_foi()}, interval = .1)
 

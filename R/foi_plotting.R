@@ -166,7 +166,7 @@ plot_foi <- function(age = c(0:100),
 
 
 plot_foi_shiny <- function(age = c(0:100), 
-                           sex = c("Male", "Female"), 
+                           sex = c(),
                            race = c("Non-Hispanic White", "Non-Hispanic Black", 
                                     "Other Hispanic", "Mexican-American", 
                                     "Other"), 
