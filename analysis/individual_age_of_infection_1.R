@@ -68,13 +68,26 @@ df_FOI_2 <- df_FOI_1 %>%
   ) %>% 
   ungroup()
 
+df_FOI_3 <- df_FOI_2 %>% 
+  filter(age == 90) %>% 
+  mutate(age  = 91, 
+         Mean = NA_real_,
+         H    = NA_real_,
+         p    = 1 - P,
+         P    = 1)
+
+df_FOI_4 <- df_FOI_2 %>% 
+  bind_rows(df_FOI_3) %>% 
+  arrange(race, year, age)
+
+
 # Create a dataframe with the transposed probabilities
-df_transp_probs_0 <- matrix(data = df_FOI_2$p,
-                            ncol = length(unique(df_FOI_2$age)),
+df_transp_probs_0 <- matrix(data = df_FOI_4$p,
+                            ncol = length(unique(df_FOI_4$age)),
                             byrow = TRUE) %>%
   as.data.frame()
 
-v_colnames <- paste0("age_", v_age_event)
+v_colnames <- paste0("age_", c(v_age_event, max(v_age_event) + 1))
 
 colnames(df_transp_probs_0) <- v_colnames
 
