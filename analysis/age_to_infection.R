@@ -48,7 +48,7 @@ get_parameters_constrained_exponential <- function(birth_cohort, race,
   bc <- birth_cohort - 1908
   par_alpha <- ilogit(alpha0[race] + bc*alpha1[race])
   par_gamma <- exp(gamma0[race] + bc*gamma1[race])
-  return(data.table(par_alpha = par_alpha, par_gamma = par_gamma))
+  return(list(par_alpha = par_alpha, par_gamma = par_gamma))
 }
 
 prob <- runif(n = n_pop)
@@ -69,11 +69,12 @@ get_parameters_constrained_exponential(birth_cohort = 1940,
                                        race = c(4, 5), 
                                        alpha0 = alpha0, alpha1 = alpha1,
                                        gamma0 = gamma0, gamma1 = gamma1)
-dt_pars <- dt_pop[, get_parameters_constrained_exponential(birth_cohort = cohort, 
+dt_pop[, c("par_alpha", "par_gamma") := get_parameters_constrained_exponential(birth_cohort = cohort, 
                                                 race = race, 
                                                 alpha0 = alpha0, alpha1 = alpha1,
                                                 gamma0 = gamma0, gamma1 = gamma1)]
-dt_pop <- cbind(dt_pop, dt_pars)
+
+
 v_probs <- runif(n = n_pop)
 dt_pop[, age_infection := inv_constrained_exponential(prob = v_probs, 
                                                       par_alpha = par_alpha,
