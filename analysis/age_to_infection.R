@@ -1,3 +1,9 @@
+
+#Load parameters
+
+load(file = "hp_foi_us_races/11.01_df_parameters_linear_cauchy.RData")
+
+
 library(data.table)
 # generate population
 n_pop <- 100000
@@ -60,10 +66,13 @@ v_event_time <- inv_constrained_exponential(prob = prob,
                                             par_gamma = par_gamma)
 hist(v_event_time)
 
-alpha0 <-c(1.05000, 0.6, 0.08, 2.32600, 1.9820)
-alpha1 <-c(-0.0067, 0.6, 0.08, -0.0397, -0-008)
-gamma0 <-c(-2.3000, 0.6, 0.08, 8.32300, -4.549)
-gamma1 <-c(-0.0070, 0.6, 0.08, 0.50010, -0.001)
+
+df_parameters_linear_cauchy #df
+
+alpha0 <- df_parameters_linear_cauchy[1:5,"Mean"]
+alpha1 <- df_parameters_linear_cauchy[6:10,"Mean"]
+gamma0 <- df_parameters_linear_cauchy[11:15,"Mean"]
+gamma1 <- df_parameters_linear_cauchy[16:20,"Mean"]
 
 get_parameters_constrained_exponential(birth_cohort = 1940, 
                                        race = c(4, 5), 
