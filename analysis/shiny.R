@@ -1,5 +1,5 @@
 library(shiny)
-library(hpgenerator)
+#library(hpgenerator)
 library(shinyWidgets)
 library(shinythemes)
 library(shinycssloaders)
@@ -20,7 +20,7 @@ ui <- fluidPage(#theme = themeSelector(),
 #  ),
   
 #tags$head(
-#  tags$style(type="text/css", 
+#  tags$style(type="text/css", ºqs
 #             "label.control-label, 
 #                                           .selectize-control.single { 
 #                                              text-align: center; 

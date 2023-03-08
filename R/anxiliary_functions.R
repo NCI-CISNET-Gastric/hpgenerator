@@ -29,3 +29,4 @@ ilogit <- function(logodds){
   
   return(p)
 }
+
