@@ -9,10 +9,11 @@ library(data.table)
 n_pop <- 100000
 dt_pop <- data.table(id = 1:n_pop,
                      cohort = 1940,
-                     race = sample(x = c(4, 5), # 4 and 5 are blacks and whites, respectively
-                                   size = n_pop, 
-                                   prob = c(0.5, 0.5),
-                                   replace = TRUE))
+                     # race = sample(x = c(4, 5), # 4 and 5 are blacks and whites, respectively. Select based on the race you want to sample for.
+                     #               size = n_pop, 
+                     #               prob = c(0.5, 0.5),
+                     #               replace = TRUE),
+                     race = 5)
 # F(a) <- par_alpha*(1-exp(-par_gamma*a))
 # prob = par_alpha*(1-exp(-par_gamma*event_time))
 
@@ -90,16 +91,6 @@ get_parameters_constrained_exponential <- function(birth_cohort, race,
   return(list(par_alpha = par_alpha, par_gamma = par_gamma))
 }
 
-prob <- runif(n = n_pop)
-par_alpha <- 0.8
-par_gamma <- 0.05
-
-v_event_time <- inv_constrained_exponential(prob = prob, 
-                                            par_alpha = par_alpha, 
-                                            par_gamma = par_gamma)
-hist(v_event_time)
-
-
 df_parameters_linear_cauchy #df
 
 alpha0 <- df_parameters_linear_cauchy[1:5,"Mean"]
@@ -108,7 +99,7 @@ gamma0 <- df_parameters_linear_cauchy[11:15,"Mean"]
 gamma1 <- df_parameters_linear_cauchy[16:20,"Mean"]
 
 get_parameters_constrained_exponential(birth_cohort = 1940, 
-                                       race = c(4, 5), 
+                                       race = c(5), 
                                        alpha0 = alpha0, alpha1 = alpha1,
                                        gamma0 = gamma0, gamma1 = gamma1)
 dt_pop[, c("par_alpha", "par_gamma") := get_parameters_constrained_exponential(birth_cohort = cohort, 
@@ -121,4 +112,4 @@ v_probs <- runif(n = n_pop)
 dt_pop[, age_infection := inv_constrained_exponential(prob = v_probs, 
                                                       par_alpha = par_alpha,
                                                       par_gamma = par_gamma)]
-hist(dt_pop$age_infection[dt_pop$age_infection==4])
+hist(dt_pop$age_infection)
