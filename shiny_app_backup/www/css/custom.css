@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+.navbar{
+  background-color: black!important;
+   color: white!important;
+}
+
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+html body div.container-fluid div.container-fluid nav.navbar.navbar-default.navbar-static-top.navbar-inverse div.container-fluid div#navbar-collapse-4364.navbar-collapse.collapse{
+  padding-left: 100px;
+}
+
+.navbar a, .navbar-header span.navbar-brand em{
+  color: white!important;
+
+}
+
+@media (min-width: 768px){
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+  margin-left: 50px;
+  margin-right: 200px;
+}
+}
+
+
+html body div.container-fluid div.container-fluid nav.navbar.navbar-default.navbar-static-top.navbar-inverse div.container-fluid div#navbar-collapse-9310.navbar-collapse.collapse ul.nav.navbar-nav li a{
+  
+    margin-left: auto !important;
+}
+
+
+html body div.container-fluid div.container-fluid nav.navbar.navbar-default.navbar-static-top.navbar-inverse div.container-fluid div.navbar-header span.navbar-brand
+
+    .irs-from, .irs-to, .irs-min, .irs-max, .irs-single, .irs-grid-text {
+  font-size: 14px!important;
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > li > .selected{
+          color: #4492DC!important;
+        }
+
+
+ div.row div.col-sm-4 form.well{
+  background-color: black;
+  color: white!important;
+}
+
+hr{
+height:2px;border-width:0;color:#4492DC;
+background-color:#4492DC;
+}
+
+div.row div.col-sm-4 form.well a{
+  color: white!important;
+}
+
+.modal-content{
+  background-color: black!important;
+  border-radius: 15px;
+  color: white;
+}
+ div div a.btn.btn-danger.first-screen{
+  background: #C30239!important;
+  border-color: #C30239!important;
+  border-radius: 15px;
+     transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  
+}
+
+ div div a.btn.btn-danger.first-screen:hover {
+  background: #6B011F!important;
+  border-color: #6B011F!important;
+  box-shadow:0px 4px 6px #6B011F;
+    transform: scale(1.1);
+}
+
+.btn.btn-danger {
+  background: #C30239!important;
+  border-color: #C30239!important;
+      border-radius: 15px;
+}
+
+
+
+html body.modal-open div#shiny-modal-wrapper div#shiny-modal.modal.fade.in div.modal-dialog div.modal-content div.modal-body div.shinyglide.glide--ltr.glide--slider.glide--swipeable div div button.btn.btn-primary.next-screen{
+  background: green!important;
+  border-color: green!important;
+  border-radius: 15px;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  
+}
+
+
+html body.modal-open div#shiny-modal-wrapper div#shiny-modal.modal.fade.in div.modal-dialog div.modal-content div.modal-body div.shinyglide.glide--ltr.glide--slider.glide--swipeable div div button.btn.btn-primary.next-screen:hover {
+  background: #3A803A!important;
+  border-color: #3A803A!important;
+    box-shadow: 0px 4px 6px #3A803A;
+    transform: scale(1.05);
+}
+
+div div button.btn.btn-default.prev-screen{
+  background: #ffdc40!important;
+  border-color: #ffdc40!important;
+  border-radius: 15px;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  
+}
+
+
+div div button.btn.btn-default.prev-screen:hover {
+  background: #E8CB4C!important;
+  border-color: #E8CB4C!important;
+    box-shadow: 0px 4px 6px #E8CB4C;
+    transform: scale(1.05);
+}
+
+html body.modal-open div#shiny-modal-wrapper div#shiny-modal.modal.fade.in div.modal-dialog div.modal-content div.modal-header h4.modal-title{
+  text-align: center;
+  
+}
+
+
+html body div.container-fluid div.container-fluid div.tab-content div#tab-3946-2.tab-pane.active div.container-fluid div.row div.col-sm-4 form.well div.form-group.shiny-input-container span.irs.irs--shiny.js-irs-1.irs-with-grid{
+  font-size: 1px;
+}
+
+.irs {
+  font-size: 1px;
+}
+
+
+html body.modal-open div#shiny-modal-wrapper div#shiny-modal.modal.fade.in div.modal-dialog div.modal-content div.modal-body div.shinyglide.glide--ltr.glide--slider.glide--swipeable div.glide__track ul.glide__slides li.glide__slide.glide__slide--active div.form-group.shiny-input-container{
+  margin-left: 10px;
+}
+
+
+.myCol {
+        padding-right: -10px;
+        padding-left: -10px;
+      }
+      
+      
+span.irs-bar{
+  background: #4492DC!important;
+}
+
+
+
+
+html body.modal-open div#shiny-modal-wrapper div#shiny-modal.modal.fade.in div.modal-dialog div.modal-content{
+  border-radius: 15px;
+  border-color: #4492DC;
+}
+
+
+
+@media (max-width: 1200px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+    
+    div.col-sm-8{
+  border-color: red !important;
+}
+}
+
+@media (max-width: 1199px) {
+  #custom_main_panel {
+     position: absolute;
+    left: 70%;
+    height: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #custom_sidebar{
+    width: 90% !important;
+  top: 0;
+  left: 0;
+  }
+}
+
+@media (max-width: 1199px) {
+  #main_panel_age_to_inf {
+     position: absolute;
+    left: 70%;
+    height: 50%;
+    transform: translateX(-50%);
+  }
+  
+  #sidebar_age_to_inf{
+    width: 90% !important;
+  top: 0;
+  left: 0;
+  }
+}
+
+.center-switch {
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+        margin: 20px;
+      }
+      
+      
+#goButton{
+  background: green !important;
+  border-color: green;
+  border-radius: 15px;
+  width: 200px !important;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  color: white!important;/* or any other value */
+    display: block; /* added this */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto; /* you may also need this if you want to center vertically */
+  margin-bottom: auto;
+  
+}
+
+#goButton:hover {
+  background: green!important;
+  border-color: green!important;
+    box-shadow: 0px 4px 6px green;
+    transform: scale(1.05);
+}
+
+
+  
+#github_but{
+  background: black !important;
+  border-color: black;
+  border-radius: 15px;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  color: white!important;/* or any other value */
+    display: block; /* added this */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto; /* you may also need this if you want to center vertically */
+  margin-bottom: auto;
+  
+}
+
+#github_but:hover {
+  background: black!important;
+  border-color: black!important;
+    box-shadow: 0px 4px 6px black;
+    transform: scale(1.05);
+}
+
+#goButton_age_to_inf{
+  background: #26a0ab !important;
+  border-color: #26a0ab;
+  border-radius: 15px;
+  width: 200px !important;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  color: white!important;/* or any other value */
+    display: block; /* added this */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto; /* you may also need this if you want to center vertically */
+  margin-bottom: auto;
+  
+}
+
+#goButton_age_to_inf:hover {
+  background: #26a0ab!important;
+  border-color: #26a0ab!important;
+    box-shadow: 0px 4px 6px #26a0ab;
+    transform: scale(1.05);
+}
+      
+
+
+div button#goButton_obs.btn.btn-default.action-button.shiny-bound-input{
+  background: green !important;
+  border-color: green;
+  border-radius: 15px;
+  width: 200px !important;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  color: white!important;/* or any other value */
+    display: block; /* added this */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px; /* you may also need this if you want to center vertically */
+  margin-bottom: auto;
+}
+
+div button#goButton_obs.btn.btn-default.action-button.shiny-bound-input:hover {
+  background: green!important;
+  border-color: green!important;
+    box-shadow: 0px 4px 6px green;
+    transform: scale(1.05);
+}
+
+.butt1,
+.butt1_ati{
+  background:#188149; 
+  color: #188149 !important;
+  border-color: #188149;
+  border-radius: 15px;
+  height:30px;
+  width:80px;
+      transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.butt2,
+.butt2_ati{
+  background: #2165b7;
+      color: #2165b7 !important;
+      border-color: #2165b7;
+      border-radius: 15px;
+  height:30px;
+  width:80px;
+          transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+
+.butt1:hover,
+.butt1_ati:hover{
+  background: #0F4E2C!important;
+  border-color: #0F4E2C!important;
+    box-shadow: 0px 4px 6px #0F4E2C;
+    transform: scale(1.05);
+}
+     
+.butt2:hover,
+.butt2_ati:hover{
+  background: #164278!important;
+  border-color: #164278!important;
+    box-shadow: 0px 4px 6px #164278;
+    transform: scale(1.05);
+}   
+
+
+
+
+
+
+
+
+.button-row, .button-row-age-to-inf{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-wrap: wrap;}
+          
+@media (min-width: 1200px) {
+
+.button-row,
+.button-row-age-to-inf{
+      justify-content: center;
+      }
+          
+.butt1, .butt2, .butt1_ati, .butt2_ati{
+  margin: 10px;
+  height:30px;
+  width:80px;
+      }
+        }  
+        
+@media (max-width: 767px)  {
+  
+  .button-row, .button-row-age-to-inf {
+    justify-content: center;
+    
+  }
+          
+          
+.butt1, .butt2, .butt1_ati, .butt2_ati{
+  margin: 10px;
+  height:30px;
+  width:80px;
+  font-size: 15px; 
+      }
+    }  
+
+
+
+html body.modal-open div#shiny-modal-wrapper div#shiny-modal.modal.fade.in div.modal-dialog div.modal-content div.modal-body div.shinyglide.glide--ltr.glide--slider.glide--swipeable div.glide__track ul.glide__slides li.glide__slide.glide__slide--active div div.form-group.shiny-input-container{
+    width: 50%; /* or any other value */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+      }
