@@ -37,7 +37,7 @@ glide_modal <- modalDialog(
       next_label = 'Start the introduction <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>',
       HTML('<center> <img src="https://studikard.com/wp-content/uploads/2022/11/Helicobacter-pylori.png" width="20%" height="20%"> </center>'),
       p( em("Helicobacter pylori (H. pylori)"), ("is a type of bacteria that can live in the digestive tract. This bacteria can lead to serious diseases including peptic ulcers and stomach (gastric) cancer."), 
-         hr(),("Our Shiny app brings H. pylori data to life, offering an interactive platform to analyze the force of infection among different race groups including Hispanics, Non-Hispanic American Indians, Non-Hispanic Asians, Non-Hispanic Blacks and Non-Hispanic Whites. It's an invaluable tool for public health officials, medical researchers, and anyone interested in gaining a comprehensive understanding of the impact and spread of H. pylori in the United States."),
+         hr(),("Our Shiny app brings"), (em("H. pylori ")), (" data to life, offering an interactive platform to analyze the force of infection among different race groups including Hispanics, Non-Hispanic American Indians, Non-Hispanic Asians, Non-Hispanic Blacks and Non-Hispanic Whites. It's an invaluable tool for public health officials, medical researchers, and anyone interested in gaining a comprehensive understanding of the impact and spread of"), (em("H. pylori ")), (" in the United States."),
          hr()
       )),
     screen(
@@ -67,7 +67,7 @@ glide_modal <- modalDialog(
                             status = "success", right = T)
            )),
     screen(
-      tags$div(style = "text-align:center; font-size: 10px;", 
+      tags$div(style = "text-align:center;", 
                p("Next, please select a cohort"),
                sliderTextInput(inputId = "cohort_obs",
                                label = "",
