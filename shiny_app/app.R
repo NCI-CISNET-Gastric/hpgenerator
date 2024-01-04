@@ -46,7 +46,7 @@ source(file = "structure/about/about_tab.R")
 
 
 
-
+ 
 # User Interface ------------------------------------------------------ 
 ui <- shinyUI( fluidPage(includeCSS("www/css/custom.css"),
                          tags$head( tags$style(type="text/css", "text {@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); font-family: 'Roboto', sans-serif;
@@ -80,7 +80,7 @@ server <- function(input, output, session) {
   
   #Introduction screen
   glide_modal_introduction_foi(input, output, session)
-  
+
   
   buttons <- buttons_for_plot_foi(input, output, session)
   
@@ -96,4 +96,3 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui, server)
-

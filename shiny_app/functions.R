@@ -64,8 +64,9 @@ summary_foi_bc <- function(ages = c(0:90),
 #' 
 
 
+
 plot_foi_shiny_v2 <- function(age = c(0:90), 
-                              race =  c("Hispanic", "NH American Indian", "NH Asian", "NH Black", "NH White"), 
+                              race =  c("Hispanic", "NH American Indian","NH Asian", "NH Black", "NH White"), 
                               cohort = 1940:1998, 
                               age_bracket = 20,
                               save_data = F,
@@ -76,9 +77,9 @@ plot_foi_shiny_v2 <- function(age = c(0:90),
                               height = 7) {
   
   jet.colors <- colorRampPalette(c("black", "#00007F", "blue", "#007FFF",
-                                          "cyan", "#7FFF7F", "yellow", "#FF7F00",
-                                          "red", "#7F0000"))
-                                          
+                                   "cyan", "#7FFF7F", "yellow", "#FF7F00",
+                                   "red", "#7F0000"))
+  
   color_map  <-  jet.colors(100)
   
   options(dplyr.summarise.inform = FALSE)
@@ -95,41 +96,82 @@ plot_foi_shiny_v2 <- function(age = c(0:90),
   
   selected_indices <- seq(1, n_cohort, length.out = 4)
   
+  if (n_cohort<=6) {
+    selected_indices <- seq(1, n_cohort, length.out = 2)
+  }
+  
   selected_values <- v_breaks[selected_indices]
   
+  all_cohorts <- 1940:1998
+  all_colors <- rev(jet.colors(length(all_cohorts))) # Reverse the colors here
+  color_df <- data.frame(cohort = all_cohorts, color = all_colors)
+  df_foi_plot <- merge(df_foi_plot, color_df, by = "cohort", all.x = TRUE)
+  final_colors <- unique(df_foi_plot$color)
   
   plot_temp <- ggplot(df_foi_plot %>% filter(age!=0), aes(y = foi_mean, x = age, group = cohort, color = cohort)) + 
-    geom_line_interactive(aes(data_id = cohort, tooltip = cohort), linewidth = .5) +   
+    geom_line_interactive(aes(data_id = cohort, color =cohort, tooltip = paste0("Birth cohort:  ",cohort)), linewidth = .5) +   
     #geom_point(data = df_geom_point_cohorts, aes(y = prev, x = age, color = cohort, size = total), shape = 1, stroke = 1) +
     xlab("Age") + 
     ylab(expression(paste("Force of infection ", (lambda)))) +
     labs(color='Birth cohort') +
-    scale_colour_gradientn(colours = rev(jet.colors(100)), breaks = selected_values) +
+    scale_color_gradientn(colors = final_colors, breaks = selected_values) +
     scale_x_continuous(breaks = seq(0, last(age), by = age_bracket), 
                        labels = seq(0, last(age), by = age_bracket), 
                        limits = c(0, last(age))) +
     scale_y_continuous(breaks = seq(0, .15, by = .05), 
                        #labels = c("0%", "20%", "40%", "60%", "80%", "100%"),
                        limits = c(0, .15)) +
-    theme_bw(base_size = 21) + 
-    theme(legend.position = c(.88, 0.2),
-          #legend.box = "vertical",
-          legend.title = element_text(vjust = .8),
-          legend.key.size = unit(.7, 'cm'), 
-          legend.spacing.x = unit(.1, 'cm'),
-          legend.text = element_text(size = 10),
-          strip.background = element_rect(fill = "transparent", color = "transparent"),
-          strip.text = element_text(size = 15, face = "bold")) +
-    #edit legends
-    guides(
-      #reverse color order (higher value on top)
-      color = guide_colorbar(reverse = TRUE))
+    theme_bw(base_size = 21)
   
   
-  if (n_race==1){
-    plot_final <- plot_temp + labs(title = race)
-  } else {
-    plot_final <- plot_temp + facet_wrap(~race)
+  if (n_race<=1){
+    plot_final <- plot_temp + labs(title = race) +
+      theme(legend.position = "bottom",
+            #legend.box = "vertical",
+            legend.title = element_text(vjust = .8),
+            legend.key.size = unit(1, 'cm'), 
+            legend.spacing.x = unit(.5, 'cm'),
+            #legend.spacing.y = unit(.5, 'cm'),
+            legend.text = element_text(size = 16),
+            strip.background = element_rect(fill = "transparent", color = "transparent"),
+            strip.text = element_text(size = 30, face = "bold")) +
+      #edit legends
+      guides(
+        #reverse color order (higher value on top)
+        color = guide_colorbar(reverse = FALSE))
+  } 
+  
+  else if (n_race<=4){
+    plot_final <- plot_temp + facet_wrap(~race) +
+      theme(legend.position = "bottom",
+            #legend.box = "vertical",
+            legend.title = element_text(vjust = .8),
+            legend.key.size = unit(1, 'cm'), 
+            legend.spacing.x = unit(.5, 'cm'),
+            #legend.spacing.y = unit(.5, 'cm'),
+            legend.text = element_text(size = 16),
+            strip.background = element_rect(fill = "transparent", color = "transparent"),
+            strip.text = element_text(size = 30, face = "bold")) +
+      #edit legends
+      guides(
+        #reverse color order (higher value on top)
+        color = guide_colorbar(reverse = FALSE))
+  }
+  
+  else {
+    plot_final <- plot_temp + facet_wrap(~race) +
+      theme(legend.position = c(.88, 0.2),
+            #legend.box = "vertical",
+            legend.title = element_text(vjust = .8),
+            legend.key.size = unit(1, 'cm'), 
+            legend.spacing.x = unit(.5, 'cm'),
+            legend.text = element_text(size = 16),
+            strip.background = element_rect(fill = "transparent", color = "transparent"),
+            strip.text = element_text(size = 30, face = "bold")) +
+      #edit legends
+      guides(
+        #reverse color order (higher value on top)
+        color = guide_colorbar(reverse = TRUE))
   }
   if(save_plot){
     
@@ -147,7 +189,6 @@ plot_foi_shiny_v2 <- function(age = c(0:90),
   
   
 }
-
 
 
 #' Logit function
@@ -293,7 +334,7 @@ age_to_infection <- function(df, cohort = 1940, race = 5, alpha0, alpha1, gamma0
 
 
 plot_age_to_infection <- function(size = 100, 
-                                  race =  c(1), 
+                                  race =  c(1:5), 
                                   cohort = c(1940:1998)) {
   
   race_titles <- c("Hispanic", "NH American Indian", "NH Asian", "NH Black", "NH White")
@@ -319,7 +360,7 @@ plot_age_to_infection <- function(size = 100,
   ][
     , .(infected_count = sum(has_event)), by = .(cohort, race, age)
   ][
-    , proportion_infected := infected_count / 10000
+    , proportion_infected := infected_count / size
   ][
     , race_fac := fifelse(race == 1, "Hispanic",
                           fifelse(race == 2, "NH American Indian",
@@ -426,4 +467,147 @@ plot_age_to_infection <- function(size = 100,
 }
 
 
+
+
+plot_age_to_infection_grid <- function(size = 100, 
+                                  race =  c(1:5), 
+                                  cohort = c(1940:1998)) {
+  
+  race_titles <- c("Hispanic", "NH American Indian", "NH Asian", "NH Black", "NH White")
+  names(race_titles) <- c(1:5)
+  
+  title_race <- paste(race_titles[as.character(race)], collapse = ", ")
+  
+  
+  jet.colors <- colorRampPalette(c("black", "#00007F", "blue", "#007FFF",
+                                   "cyan", "#7FFF7F", "yellow", "#FF7F00",
+                                   "red", "#7F0000"))
+  
+  color_map  <-  jet.colors(100)
+  
+  options(dplyr.summarise.inform = FALSE)
+  
+  dt_ati <- age_to_infection(df = df_p_hat_race_final_cohort, cohort = cohort, race = race, alpha0 = alpha0, alpha1 = alpha1, gamma0 = gamma0, gamma1 = gamma1, size = size)
+  
+  
+  # Preparing the data: filtering out NA values in age_to_infection
+  dt_ati_hm <- dt_ati[!is.na(age_to_infection)]
+  
+  # Creating a new data.table for the heatmap
+  # Counting the occurrences of age_to_infection for each cohort and race_fac combination
+  dt_hm <- dt_ati_hm[, .(people = .N), by = .(cohort, race_fac, age_to_infection)]
+  
+  n_cohort <- length(cohort)
+  
+  n_race <- length(race)
+  
+  n_age <- length(unique(dt_hm$age))
+  
+  #df_foi_plot$age <- as.numeric(df_foi_plot$age)
+  
+  v_breaks <- unique(dt_hm$age_to_infection)
+  
+  selected_indices <- seq(1, n_age, length.out = 4)
+  
+  selected_values <- v_breaks[selected_indices]
+  
+  
+  
+  # Creating the plot
+  plot_final <- ggplot(dt_hm, aes(x = factor(cohort), y = age_to_infection, fill = people)) + 
+    geom_tile_interactive(aes(tooltip = paste0("Birth cohort:  ",cohort, "<br>Age at infection:  ",age_to_infection, "<br>People:  ",people)), size = 1) +
+    #geom_bar() +
+    scale_fill_gradientn(name = "People", colours = jet.colors(100)) +
+    #scale_x_continuous(breaks = cohort, 
+    #                   labels = cohort) +
+    #scale_y_continuous(breaks = seq(0, .4, by = .1), 
+    #                   labels = seq(0, .4, by = .1)) +
+    #scale_x_continuous(breaks = seq(first(cohort), last(cohort), by = 10), 
+    #                   labels = seq(first(cohort), last(cohort), by = 10), 
+    #                   limits = c(first(cohort), last(cohort))) +
+    labs(title = "Population that eventually gets infected ",
+         x = "Birth Cohort",
+         y = "Age") + 
+    theme_bw(base_size = 20)
+  
+ if (n_cohort>7 & n_cohort<=40){
+    
+    plot_final <- plot_final + scale_x_discrete(breaks = seq(min(dt_hm$cohort), max(dt_hm$cohort), by = 5), 
+                                                labels = seq(min(dt_hm$cohort), max(dt_hm$cohort), by = 5))  +
+      theme(axis.text.x = element_text(angle = 45, margin = margin(t = 10)))
+  
+ } else{
+    
+    plot_final <- plot_final + scale_x_discrete(breaks = seq(min(dt_hm$cohort), max(dt_hm$cohort), by = 10), 
+                                                labels = seq(min(dt_hm$cohort), max(dt_hm$cohort), by = 10))  +
+      theme(axis.text.x = element_text(angle = 45, margin = margin(t = 10)))
+  }
+  
+  if (n_race==1){
+    plot_final <- plot_final + labs(subtitle = title_race) +
+      theme(legend.position = "bottom",
+            #legend.box = "vertical",
+            legend.title = element_text(vjust = .8, hjust = 0.5, size = 18), # Updated this line        legend.key.size = unit(.7, 'cm'), 
+            legend.spacing.y = unit(.5, 'cm'),
+            legend.key.size = unit(1, 'cm'), # Adjust key size
+            legend.key.width = unit(2, 'cm'), # Adjust key width
+            #panel.spacing.y = unit(1, "cm"),
+            #panel.spacing.x = unit(.5, "cm"),
+            legend.text = element_text(size = 20),
+            strip.background = element_rect(fill = "transparent", color = "transparent"),
+            axis.text.x = element_text(angle = 45, margin = margin(t = 10)),
+            strip.text = element_text(size = 20, face = "bold")) +
+      
+      #edit legends
+      guides(
+        #reverse color order (higher value on top)
+        fill = guide_colorbar(reverse = FALSE))
+    
+  } else if (n_race>1 & n_race<=4){
+    
+    plot_final <- plot_final + facet_wrap(~race_fac, scales = "free_x") +
+      theme(legend.position = "bottom",
+            #legend.box = "vertical",
+            legend.title = element_text(vjust = .8, hjust = 0.5, size = 18), # Updated this line        legend.key.size = unit(.7, 'cm'), 
+            legend.spacing.y = unit(.5, 'cm'),
+            #panel.spacing.y = unit(.1, "cm"),
+            #panel.spacing.x = unit(.5, "cm"),
+            legend.key.size = unit(1, 'cm'), # Adjust key size
+            legend.key.width = unit(2, 'cm'), # Adjust key width
+            legend.text = element_text(size = 20),
+            strip.background = element_rect(fill = "transparent", color = "transparent"),
+            axis.text.x = element_text(angle = 45, margin = margin(t = 10)),
+            strip.text = element_text(size = 20, face = "bold")) +
+      
+      #edit legends
+      guides(
+        #reverse color order (higher value on top)
+        fill = guide_colorbar(reverse = FALSE))
+  } else{
+    
+    plot_final <- plot_final + facet_wrap(~race_fac, scales = "free_x") +
+      theme(legend.position = c(.88, 0.2),
+            #legend.box = "vertical",
+            legend.title = element_text(vjust = .8, hjust = 0.5, size = 18), # Updated this line        legend.key.size = unit(.7, 'cm'), 
+            legend.spacing.y = unit(.5, 'cm'),
+            legend.key.size = unit(1, 'cm'), # Adjust key size
+            #panel.spacing.y = unit(1, "cm"),
+            #panel.spacing.x = unit(.5, "cm"),
+            legend.text = element_text(size = 16),
+            strip.background = element_rect(fill = "transparent", color = "transparent"),
+            axis.text.x = element_text(angle = 45, margin = margin(t = 10)),
+            strip.text = element_text(size = 20, face = "bold")) +
+      
+      #edit legends
+      guides(
+        #reverse color order (higher value on top)
+        fill = guide_colorbar(reverse = FALSE))
+    
+  }
+  
+  
+  return(plot_final)
+  
+  
+}
 

@@ -19,7 +19,9 @@ plots_server_foi <- function(input, output, session, buttons) {
       opts_hover(css = ''),
       opts_sizing(rescale = FALSE),
       opts_hover_inv(css = "opacity:0.1;"),
-      opts_tooltip(opacity = .7, use_fill = TRUE, use_stroke = TRUE),
+      opts_tooltip(
+        opacity = 0.8, use_fill = TRUE,
+        use_stroke = FALSE),
       opts_zoom(min = .5, max = 4)
       #sizingPolicy(defaultWidth = "100%", defaultHeight = "100%")
     ),
@@ -54,3 +56,4 @@ plots_server_foi <- function(input, output, session, buttons) {
   })  
   
 }
+

@@ -5,7 +5,7 @@ main_panel_foi <- mainPanel(id = "custom_main_panel",
           #h1(textOutput("txt_foi"), align = "center"),
           #h2("subtítulo central"),
           # Irán los outputs
-          girafeOutput("plt_foi") %>% withSpinner(image = "https://thumbs.gfycat.com/AdorableMajesticJellyfish-size_restricted.gif"),
-          girafeOutput("plt_foiglide") %>% withSpinner(image = "https://thumbs.gfycat.com/AdorableMajesticJellyfish-size_restricted.gif"),
+          girafeOutput("plt_foi") %>% withSpinner(color="#E32500", type =6, size = 2.5),
+          girafeOutput("plt_foiglide") %>% withSpinner(color="#E32500", type =6, size = 2.5),
           
 )

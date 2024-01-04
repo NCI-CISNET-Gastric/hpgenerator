@@ -154,7 +154,7 @@ plot_foi_shiny_v2 <- function(age = c(0:90),
 }
 
 
-
+plot_foi_shiny_v2()
 #' Logit function
 #'
 #' \code{logit} computes the log odds of a probability \code{p}.
@@ -297,8 +297,8 @@ age_to_infection <- function(df, cohort = 1940, race = 5, alpha0, alpha1, gamma0
 
 
 
-plot_age_to_infection <- function(size = 100, 
-                                  race =  c(1), 
+plot_age_to_infection <- function(size = 10000, 
+                                  race =  c(1:5), 
                                   cohort = c(1940:1998)) {
   
   race_titles <- c("Hispanic", "NH American Indian", "NH Asian", "NH Black", "NH White")
@@ -324,7 +324,7 @@ plot_age_to_infection <- function(size = 100,
   ][
     , .(infected_count = sum(has_event)), by = .(cohort, race, age)
   ][
-    , proportion_infected := infected_count / 10000
+    , proportion_infected := infected_count / size
   ][
     , race_fac := fifelse(race == 1, "Hispanic",
                           fifelse(race == 2, "NH American Indian",
@@ -364,7 +364,7 @@ plot_age_to_infection <- function(size = 100,
     theme_bw(base_size = 20)
   
   
-  if (n_race==1){
+  if (n_race<=4){
     plot_final <- plot_temp + labs(subtitle = title_race) +
       theme(legend.position = "bottom",
             #legend.box = "vertical",
@@ -383,25 +383,6 @@ plot_age_to_infection <- function(size = 100,
         #reverse color order (higher value on top)
         fill = guide_colorbar(reverse = FALSE))
     
-  } else if (n_race>1 & n_race<=4){
-    
-    plot_final <- plot_temp + facet_wrap(~race_fac, scales = "free_x") +
-      theme(legend.position = "bottom",
-            #legend.box = "vertical",
-            legend.title = element_text(vjust = .8, hjust = 0.5, size = 18), # Updated this line        legend.key.size = unit(.7, 'cm'), 
-            legend.spacing.y = unit(.5, 'cm'),
-            #panel.spacing.y = unit(.1, "cm"),
-            #panel.spacing.x = unit(.5, "cm"),
-            legend.key.size = unit(1, 'cm'), # Adjust key size
-            legend.text = element_text(size = 20),
-            strip.background = element_rect(fill = "transparent", color = "transparent"),
-            axis.text.x = element_text(angle = 45, margin = margin(t = 10)),
-            strip.text = element_text(size = 20, face = "bold")) +
-      
-      #edit legends
-      guides(
-        #reverse color order (higher value on top)
-        fill = guide_colorbar(reverse = FALSE))
   } else{
     
     plot_final <- plot_temp + facet_wrap(~race_fac, scales = "free_x") +

@@ -1,4 +1,4 @@
-glide_modal_introduction_foi <- function(input, output, session) {
+glide_modal_introduction_foi <- function(input, output, session, buttons) {
   
 observe({
   if (input$toggleSidebar) {
@@ -38,7 +38,8 @@ glide_modal <- modalDialog(
       HTML('<center> <img src="https://studikard.com/wp-content/uploads/2022/11/Helicobacter-pylori.png" width="20%" height="20%"> </center>'),
       p( em("Helicobacter pylori (H. pylori)"), ("is a type of bacteria that can live in the digestive tract. This bacteria can lead to serious diseases including peptic ulcers and stomach (gastric) cancer."), 
          hr(),("Our Shiny app brings"), (em("H. pylori ")), (" data to life, offering an interactive platform to analyze the force of infection among different race groups including Hispanics, Non-Hispanic American Indians, Non-Hispanic Asians, Non-Hispanic Blacks and Non-Hispanic Whites. It's an invaluable tool for public health officials, medical researchers, and anyone interested in gaining a comprehensive understanding of the impact and spread of"), (em("H. pylori ")), (" in the United States."),
-         hr()
+         hr(),
+           HTML('<center><img src="cisnet_small.jpg" width="7%" height="7%"> <img src="nih.png" width="18%" height="18%"> <br> </br> This generator is a project of the Cancer Intervention and Surveillance Modeling Network (CISNET) </center>'),
       )),
     screen(
       tags$div(style = "text-align:center;", 
@@ -75,8 +76,10 @@ glide_modal <- modalDialog(
                                selected = c(1940:1998))
                
       )),
-    screen(
-      p("Thanks, we're all set ! \n Remember to plot the force of infection")
+    screen(             actionButton(inputId = "goButton", 
+                                     label =  " Plot Force of Infection",
+                                     width = "100%", 
+                                     icon = icon("chart-line", "fa-lg"))
     )
   )
 )

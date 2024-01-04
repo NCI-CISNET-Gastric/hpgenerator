@@ -5,7 +5,7 @@ account: jorgeroa
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9547881
-bundleId: 7529617
+bundleId: 8040783
 url: https://jorgeroa.shinyapps.io/Hpgenerator/
 version: 1
 asMultiple: FALSE
