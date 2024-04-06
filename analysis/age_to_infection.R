@@ -6,13 +6,15 @@ load(file = "hp_foi_us_races/11.01_df_parameters_linear_cauchy.RData")
 
 library(data.table)
 # generate population
-n_pop <- 100000
+n_pop <- 10000000
 dt_pop <- data.table(id = 1:n_pop,
                      cohort = 1940,
-                     race = sample(x = c(4, 5), 
-                                   size = n_pop, 
-                                   prob = c(0.5, 0.5),
-                                   replace = TRUE))
+                     race = 5
+                     # race = sample(x = c(4, 5), 
+                     #               size = n_pop, 
+                     #               prob = c(0.5, 0.5),
+                     #               replace = TRUE)
+                     )
 # F(a) <- par_alpha*(1-exp(-par_gamma*a))
 # prob = par_alpha*(1-exp(-par_gamma*event_time))
 #' Inverse constrained exponential function
@@ -89,3 +91,10 @@ dt_pop[, age_infection := inv_constrained_exponential(prob = v_probs,
                                                       par_alpha = par_alpha,
                                                       par_gamma = par_gamma)]
 hist(dt_pop$age_infection)
+summary(dt_pop$age_infection)
+
+dt_pop_whites <- dt_pop[, !c("race", "par_alpha", "par_gamma")]
+dt_pop_whites[, race_str := "NH whites"]
+dt_pop_whites
+fwrite(x = dt_pop_whites, file = "output/MISCAN_age_infection_whites_2023_03_01.csv")
+
